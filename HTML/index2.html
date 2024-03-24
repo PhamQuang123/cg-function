@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    img {
+        border-radius: 50%;
+    }
+</style>
+<body>
+
+<img src="img/hinh-nen-one-piece-52.jpg"
+     style="width: 50px; height: 50px; top: 0; left: 0; position: absolute" alt="photo" id="x"/>
+<button id="btn" onclick="divert()">Run-CW</button>
+<div id="ball" onkeydown="moveRightB()"></div>
+
+<script>
+    let y = document.getElementById("x");
+    let speedX = 1;
+    let speedY = 1;
+    let speedRandomX = 1;
+    let speedRandomY = 1;
+
+    let check = 0;
+    let click = document.getElementById("btn");
+
+    function home(a, b) {
+        y.style.left = a - 1 + "px";
+        y.style.top = b - 1 + "px";
+    }
+
+    function runTop(speed) {
+        y.style.top = speed + parseInt(y.style.top) + "px";
+    }
+
+    function runLeft(speed) {
+        y.style.left = speed + parseInt(y.style.left) + "px";
+    }
+
+    function runBallCW(speedX, speedY) {
+
+        let a = parseInt(y.style.left);
+        let b = parseInt(y.style.top);
+
+        if (parseInt(y.style.left) < window.innerWidth - 50 && parseInt(y.style.top) == 0) {
+            runLeft(speedX);
+        }
+        if (parseInt(y.style.left) >= window.innerWidth - 50 && parseInt(y.style.top) < window.innerHeight - 50) {
+            runTop(speedY);
+        }
+        if (parseInt(y.style.left) <= window.innerWidth - 50 && parseInt(y.style.top) >= window.innerHeight - 50) {
+            runLeft(-speedX);
+        }
+        if (parseInt(y.style.left) == 0 && parseInt(y.style.top) > 0) {
+            // if (speedY > 0) {
+            //     speedY = -1;
+            // }
+
+            runTop(-speedY);
+        }
+        if (parseInt(y.style.top) < window.innerHeight - 50 && parseInt(y.style.top) > 0 && parseInt(y.style.left) < window.innerWidth - 50 && parseInt(y.style.left) > 0) {
+            if (a !== 0 && b !== 0) {
+                home(a, b);
+            }
+        }
+
+    }
+
+    function runBallCWW(speedX, speedY) {
+        if (parseInt(y.style.left) <= window.innerWidth - 50 && parseInt(y.style.top) <= 0) {
+            runLeft(-speedX);
+        }
+        if (parseInt(y.style.left) == 0 && parseInt(y.style.top) < window.innerHeight - 50) {
+            runTop(speedY)
+        }
+        if (parseInt(y.style.top) >= window.innerHeight - 50 && parseInt(y.style.left) <= window.innerWidth - 50) {
+            runLeft(speedX);
+        }
+        if (parseInt(y.style.left) >= window.innerWidth - 50 && parseInt(y.style.top) > 0) {
+            runTop(-speedY);
+        }
+
+    }
+
+    function runRandom() {
+        runLeft(speedRandomX);
+        runTop(speedRandomY);
+        if (parseInt(y.style.left) >= window.innerWidth - 50 ) {
+            if(speedRandomX < 0){
+                speedRandomX = -speedRandomX;
+            }
+            speedRandomX = -speedRandomX;
+        }
+        if (parseInt(y.style.left) == 0){
+            speedRandomX = -speedRandomX;
+        }
+        if (parseInt(y.style.top) == 0){
+            speedRandomY = -speedRandomY;
+        }
+        if (parseInt(y.style.top) >= window.innerHeight - 50 - 40 ) {
+            if (speedRandomY < 0){
+                speedRandomY = -speedRandomY;
+            }
+            speedRandomY = -speedRandomY;
+        }
+
+
+    }
+
+
+    function divert() {
+        check += 1;
+        if(check > 3){
+            check = 0;
+        }
+        if (check ==3){
+            click.innerHTML = "Stop";
+
+            clearInterval(stop);
+        }
+    }
+
+
+   let stop =  setInterval(() => {
+        if (check == 0) {
+            click.innerHTML = "Run-CW";
+            runBallCW(speedX, speedY);
+        } else if (check == 1) {
+            click.innerHTML = "Run-CWW";
+            runBallCWW(speedX, speedY);
+        } else {
+            click.innerHTML = "Run-Random";
+            runRandom();
+        }
+    }, 1)
+</script>
+<script>
+    let b = document.getElementById("ball");
+
+    function bang(){
+        b.style.width = "300px";
+        b.style.height = "40px";
+        b.style.backgroundColor = "blue";
+        b.style.position = "absolute";
+        b.style.bottom = "0";
+        b.style.left = "200px";
+    }
+    function moveRightB(){
+        b.style.left = parseInt(b.style.left) + 1 +"px";
+        console.log(b.style.left)
+    }
+    bang();
+</script>
+</body>
+</html>

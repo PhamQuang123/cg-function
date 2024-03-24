@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navCRD {
+    width: 100%;
+    height: 60px;
+    background-color: lightslategray;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+}
+
+.navCRD div {
+    margin-top: 10px;
+    height: 30px;
+}
+
+.navCRD input {
+    border-radius: 5px;
+    border: none;
+}
+
+.text {
+    text-align: center;
+    color: black;
+}
+
+tr {
+    margin: 4px 0;
+    border: 1px solid gray;
+    /*background-color: #d5d1d1;*/
+}
+td {
+    margin: 4px 0;
+    height: 40px;
+    padding: 10px 8px;
+    border: 1px solid gray;
+
+}
+
+.btn-crud {
+    width: 70px;
+}
+
+.crud {
+    width: 100%;
+    height: calc(100% - 60px);
+    background-color: rgba(10, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    order: 1;
+    display: none;
+
+}
+.show{
+    display: block;
+}
+.edit-form {
+    width: 400px;
+    height: 300px;
+    background-color: #ccc3c3;
+    border-radius: 5px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+
+    top: 50%;
+    left: 50%;
+    order: 2;
+
+}
+
+.edit-form form {
+    margin: 40px 110px;
+}
+
+.f-inp {
+    border-radius: 5px;
+    border: none;
+    width: 190px;
+    height: 30px;
+}
+
+.btn-add {
+    width: 70px;
+    margin-left: 15px;
+}
+.btn-f{
+    margin-top: 28px;
+    display: flex;
+}
+.price{
+    display: flex;
+    justify-content: center;
+}
+.up-down{
+    color: white;
+    margin-left: 16px;
+}
+.up-down:hover{
+    font-size: 20px;
+    cursor: pointer;
+}
